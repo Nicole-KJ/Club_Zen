@@ -1,6 +1,6 @@
 ﻿namespace FrontEnd.Models
 {
-    public class EventoWiewModel
+    public class EventoViewModel
     {
         public int IdEvento { get; set; }
         public string Nombre { get; set; } = null!;

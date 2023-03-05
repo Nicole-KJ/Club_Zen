@@ -1,8 +1,8 @@
 ﻿namespace FrontEnd.Models
 {
-    public class TennisCourtWiewModel
+    public class RanchitoViewModel
     {
-        public int IdTennisCourt { get; set; }
+        public int IdRanchito { get; set; }
         public string Desc { get; set; } = null!;
     }
 }

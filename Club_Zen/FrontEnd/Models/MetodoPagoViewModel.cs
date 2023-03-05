@@ -1,6 +1,6 @@
 ﻿namespace FrontEnd.Models
 {
-    public class MetodoPagoWiewModel
+    public class MetodoPagoViewModel
     {
         public int IdMetodoPago { get; set; }
         public int IdUsuario { get; set; }

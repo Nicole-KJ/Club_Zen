@@ -1,8 +1,8 @@
 ﻿namespace FrontEnd.Models
 {
-    public class RanchitoWiewModel
+    public class PermisoViewModel
     {
-        public int IdRanchito { get; set; }
+        public int IdPermiso { get; set; }
         public string Desc { get; set; } = null!;
     }
 }

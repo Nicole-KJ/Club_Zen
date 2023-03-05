@@ -1,8 +1,8 @@
 ﻿namespace FrontEnd.Models
 {
-    public class PermisoWiewModel
+    public class TennisCourtViewModel
     {
-        public int IdPermiso { get; set; }
+        public int IdTennisCourt { get; set; }
         public string Desc { get; set; } = null!;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace FrontEnd.Models
 {
-    public class ReservacionEventoWiewModel
+    public class ReservacionEventoViewModel
     {
         public int IdReservacionEvento { get; set; }
         public int IdEvento { get; set; }

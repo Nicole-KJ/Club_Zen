@@ -1,6 +1,6 @@
 ﻿namespace FrontEnd.Models
 {
-    public class LineaFacturaWiewModel
+    public class LineaFacturaViewModel
     {
         public int IdLinea { get; set; }
         public int IdFactura { get; set; }
