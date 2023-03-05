@@ -28,7 +28,7 @@ namespace Entities
         public virtual DbSet<ReservacionEvento> ReservacionEventos { get; set; } = null!;
         public virtual DbSet<ReservacionMesa> ReservacionMesas { get; set; } = null!;
         public virtual DbSet<ReservacionRanchito> ReservacionRanchitos { get; set; } = null!;
-        public virtual DbSet<ReservacionTenni> ReservacionTennis { get; set; } = null!;
+        public virtual DbSet<ReservacionTennis> ReservacionTennis { get; set; } = null!;
         public virtual DbSet<TennisCourt> TennisCourts { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
 
@@ -37,7 +37,7 @@ namespace Entities
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-7KJK3GG\\MSSQLSERVER01;Database=BD_Club_Zen;Integrated Security=True;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-GA0U25H\\SQLEXPRESS;Database=BD_Club_Zen;Integrated Security=True;Trusted_Connection=True;");
             }
         }
 
@@ -340,7 +340,7 @@ namespace Entities
                     .HasConstraintName("FK_Reservacion_Ranchito_Usuarios");
             });
 
-            modelBuilder.Entity<ReservacionTenni>(entity =>
+            modelBuilder.Entity<ReservacionTennis>(entity =>
             {
                 entity.HasKey(e => e.IdReservacionTennis);
 

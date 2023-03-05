@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Entities
 {
-    public partial class ReservacionTenni
+    public partial class ReservacionTennis
     {
         public int IdReservacionTennis { get; set; }
         public int IdTennisCourt { get; set; }

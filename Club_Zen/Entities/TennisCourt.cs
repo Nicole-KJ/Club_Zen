@@ -7,12 +7,12 @@ namespace Entities
     {
         public TennisCourt()
         {
-            ReservacionTennis = new HashSet<ReservacionTenni>();
+            ReservacionTennis = new HashSet<ReservacionTennis>();
         }
 
         public int IdTennisCourt { get; set; }
         public string Desc { get; set; } = null!;
 
-        public virtual ICollection<ReservacionTenni> ReservacionTennis { get; set; }
+        public virtual ICollection<ReservacionTennis> ReservacionTennis { get; set; }
     }
 }
