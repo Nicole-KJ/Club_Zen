@@ -65,5 +65,39 @@ namespace FrontEnd.Helpers
             return ReservacionEventoViewModel;
         }
 
+        public ReservacionEventoViewModel Edit(ReservacionEventoViewModel reservacionEvento)
+        {
+
+
+            ReservacionEventoViewModel ReservacionEvento;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/reservacionEvento/", reservacionEvento);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            ReservacionEvento = JsonConvert.DeserializeObject<ReservacionEventoViewModel>(content);
+
+
+
+            return ReservacionEvento;
+        }
+
+
+
+        public ReservacionEventoViewModel Delete(int id)
+        {
+
+
+            ReservacionEventoViewModel ReservacionEvento;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/reservacionEvento/" + id.ToString());
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            ReservacionEvento = JsonConvert.DeserializeObject<ReservacionEventoViewModel>(content);
+
+
+
+            return ReservacionEvento;
+        }
+
     }
 }

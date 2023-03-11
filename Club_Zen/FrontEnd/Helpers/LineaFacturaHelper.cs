@@ -62,7 +62,41 @@ namespace FrontEnd.Helpers
 
 
 
-            return LineaFacturaViewModel;
+            return lineaFactura;
+        }
+
+        public LineaFacturaViewModel Edit(LineaFacturaViewModel lineaFactura)
+        {
+
+
+            LineaFacturaViewModel LineaFactura;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/category/", lineaFactura);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            LineaFactura = JsonConvert.DeserializeObject<LineaFacturaViewModel>(content);
+
+
+
+            return LineaFactura;
+        }
+
+
+
+        public LineaFacturaViewModel Delete(int id)
+        {
+
+
+            LineaFacturaViewModel lineaFactura;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/category/" + id.ToString());
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            lineaFactura = JsonConvert.DeserializeObject<LineaFacturaViewModel>(content);
+
+
+
+            return lineaFactura;
         }
 
     }

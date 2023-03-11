@@ -65,5 +65,39 @@ namespace FrontEnd.Helpers
             return MetodoPagoViewModel;
         }
 
+        public MetodoPagoViewModel Edit(MetodoPagoViewModel metodoPago)
+        {
+
+
+            MetodoPagoViewModel MetodoPago;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/metodoPago/", metodoPago);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            MetodoPago = JsonConvert.DeserializeObject<MetodoPagoViewModel>(content);
+
+
+
+            return MetodoPago;
+        }
+
+
+
+        public MetodoPagoViewModel Delete(int id)
+        {
+
+
+            MetodoPagoViewModel MetodoPago;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/metodoPago/" + id.ToString());
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            MetodoPago = JsonConvert.DeserializeObject<MetodoPagoViewModel>(content);
+
+
+
+            return MetodoPago;
+        }
+
     }
 }

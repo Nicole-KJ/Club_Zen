@@ -65,5 +65,39 @@ namespace FrontEnd.Helpers
             return TennisCourtViewModel;
         }
 
+        public TennisCourtViewModel Edit(TennisCourtViewModel tennisCourt)
+        {
+
+
+            TennisCourtViewModel TennisCourt;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/tennisCourt/", tennisCourt);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            TennisCourt = JsonConvert.DeserializeObject<TennisCourtViewModel>(content);
+
+
+
+            return TennisCourt;
+        }
+
+
+
+        public TennisCourtViewModel Delete(int id)
+        {
+
+
+            TennisCourtViewModel TennisCourt;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/tennisCourt/" + id.ToString());
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            TennisCourt = JsonConvert.DeserializeObject<TennisCourtViewModel>(content);
+
+
+
+            return TennisCourt;
+        }
+
     }
 }

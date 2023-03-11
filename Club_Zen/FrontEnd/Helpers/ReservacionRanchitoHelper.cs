@@ -65,5 +65,39 @@ namespace FrontEnd.Helpers
             return ReservacionRanchitoViewModel;
         }
 
+        public ReservacionRanchitoViewModel Edit(ReservacionRanchitoViewModel reservacionRanchito)
+        {
+
+
+            ReservacionRanchitoViewModel ReservacionRanchito;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/reservacionRanchito/", reservacionRanchito);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            ReservacionRanchito = JsonConvert.DeserializeObject<ReservacionRanchitoViewModel>(content);
+
+
+
+            return ReservacionRanchito;
+        }
+
+
+
+        public ReservacionRanchitoViewModel Delete(int id)
+        {
+
+
+            ReservacionRanchitoViewModel ReservacionRanchito;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/reservacionRanchito/" + id.ToString());
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            ReservacionRanchito = JsonConvert.DeserializeObject<ReservacionRanchitoViewModel>(content);
+
+
+
+            return ReservacionRanchito;
+        }
+
     }
 }

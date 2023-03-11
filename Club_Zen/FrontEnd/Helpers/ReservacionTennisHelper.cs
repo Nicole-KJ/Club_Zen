@@ -65,5 +65,39 @@ namespace FrontEnd.Helpers
             return ReservacionTennisViewModel;
         }
 
+        public ReservacionTennisViewModel Edit(ReservacionTennisViewModel reservacionTennis)
+        {
+
+
+            ReservacionTennisViewModel ReservacionTennis;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/reservacionTennis/", reservacionTennis);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            ReservacionTennis = JsonConvert.DeserializeObject<ReservacionTennisViewModel>(content);
+
+
+
+            return ReservacionTennis;
+        }
+
+
+
+        public ReservacionTennisViewModel Delete(int id)
+        {
+
+
+            ReservacionTennisViewModel ReservacionTennis;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/reservacionTennis/" + id.ToString());
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            ReservacionTennis = JsonConvert.DeserializeObject<ReservacionTennisViewModel>(content);
+
+
+
+            return ReservacionTennis;
+        }
+
     }
 }

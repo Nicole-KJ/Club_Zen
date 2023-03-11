@@ -65,5 +65,39 @@ namespace FrontEnd.Helpers
             return ReservacionMesaViewModel;
         }
 
+        public ReservacionMesaViewModel Edit(ReservacionMesaViewModel reservacionMesa)
+        {
+
+
+            ReservacionMesaViewModel ReservacionMesa;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/reservacionMesa/", reservacionMesa);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            ReservacionMesa = JsonConvert.DeserializeObject<ReservacionMesaViewModel>(content);
+
+
+
+            return ReservacionMesa;
+        }
+
+
+
+        public ReservacionMesaViewModel Delete(int id)
+        {
+
+
+            ReservacionMesaViewModel ReservacionMesa;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/reservacionMesa/" + id.ToString());
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            ReservacionMesa = JsonConvert.DeserializeObject<ReservacionMesaViewModel>(content);
+
+
+
+            return ReservacionMesa;
+        }
+
     }
 }

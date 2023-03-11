@@ -65,5 +65,39 @@ namespace FrontEnd.Helpers
             return MesaViewModel;
         }
 
+        public MesaViewModel Edit(MesaViewModel mesa)
+        {
+
+
+            MesaViewModel Mesa;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/mesa/", mesa);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            Mesa = JsonConvert.DeserializeObject<MesaViewModel>(content);
+
+
+
+            return  Mesa;
+        }
+
+
+
+        public MesaViewModel Delete(int id)
+        {
+
+
+            MesaViewModel Mesa;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/mesa/" + id.ToString());
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            Mesa = JsonConvert.DeserializeObject<MesaViewModel>(content);
+
+
+
+            return Mesa;
+        }
+
     }
 }
