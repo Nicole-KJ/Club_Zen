@@ -65,5 +65,39 @@ namespace FrontEnd.Helpers
             return EventoViewModel;
         }
 
+        public EventoViewModel Edit(EventoViewModel evento)
+        {
+
+
+            EventoViewModel Evento;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/evento/", evento);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            Evento = JsonConvert.DeserializeObject<EventoViewModel>(content);
+
+
+
+            return Evento;
+        }
+
+
+
+        public EventoViewModel Delete(int id)
+        {
+
+
+            EventoViewModel Evento;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/evento/" + id.ToString());
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            Evento = JsonConvert.DeserializeObject<EventoViewModel>(content);
+
+
+
+            return Evento;
+        }
+
     }
 }

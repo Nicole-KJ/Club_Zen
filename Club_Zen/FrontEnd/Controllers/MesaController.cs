@@ -1,36 +1,48 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FrontEnd.Helpers;
+using FrontEnd.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FrontEnd.Controllers
 {
     public class MesaController : Controller
     {
-        // GET: MesaController
+        MesaHelper mesaHelper;
+
+        // GET: EventoController
         public ActionResult Index()
         {
-            return View();
+            mesaHelper = new MesaHelper();
+            List<MesaViewModel> list = mesaHelper.GetAll();
+            return View(list);
         }
 
-        // GET: MesaController/Details/5
+        // GET: EventoController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            mesaHelper = new MesaHelper();
+            MesaViewModel mesa = mesaHelper.Get(id);
+
+            return View(mesa);
         }
 
-        // GET: MesaController/Create
+        // GET: EventoController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: MesaController/Create
+        // POST: EventoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(MesaViewModel mesa)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                mesaHelper = new MesaHelper();
+                mesa = mesaHelper.Create(mesa);
+
+                return RedirectToAction("Details", new { id = mesa.IdMesa });
             }
             catch
             {
@@ -38,19 +50,24 @@ namespace FrontEnd.Controllers
             }
         }
 
-        // GET: MesaController/Edit/5
+        // GET: EventoController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            mesaHelper = new MesaHelper();
+            MesaViewModel mesa = mesaHelper.Get(id);
+            return View(mesa);
         }
 
-        // POST: MesaController/Edit/5
+        // POST: EventoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(MesaViewModel mesa)
         {
             try
             {
+                mesaHelper = new MesaHelper();
+                mesa = mesaHelper.Edit(mesa);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -59,19 +76,25 @@ namespace FrontEnd.Controllers
             }
         }
 
-        // GET: MesaController/Delete/5
+        // GET: EventoController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            mesaHelper = new MesaHelper();
+            MesaViewModel mesa = mesaHelper.Get(id);
+
+            return View(mesa);
         }
 
-        // POST: MesaController/Delete/5
+        // POST: EventoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(MesaViewModel mesa)
         {
             try
             {
+                mesaHelper = new MesaHelper();
+                mesaHelper.Delete(mesa.IdMesa);
+
                 return RedirectToAction(nameof(Index));
             }
             catch

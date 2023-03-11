@@ -1,36 +1,48 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FrontEnd.Helpers;
+using FrontEnd.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FrontEnd.Controllers
 {
     public class UsuarioController : Controller
     {
-        // GET: UsuarioController
+        UsuarioHelper usuarioHelper;
+
+        // GET: EventoController
         public ActionResult Index()
         {
-            return View();
+            usuarioHelper = new UsuarioHelper();
+            List<UsuarioViewModel> list = usuarioHelper.GetAll();
+            return View(list);
         }
 
-        // GET: UsuarioController/Details/5
+        // GET: EventoController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            usuarioHelper = new UsuarioHelper();
+            UsuarioViewModel usuario = usuarioHelper.Get(id);
+
+            return View(usuario);
         }
 
-        // GET: UsuarioController/Create
+        // GET: EventoController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: UsuarioController/Create
+        // POST: EventoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(UsuarioViewModel usuario)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                usuarioHelper = new UsuarioHelper();
+                usuario = usuarioHelper.Create(usuario);
+
+                return RedirectToAction("Details", new { id = usuario.IdUsuario });
             }
             catch
             {
@@ -38,19 +50,24 @@ namespace FrontEnd.Controllers
             }
         }
 
-        // GET: UsuarioController/Edit/5
+        // GET: EventoController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            usuarioHelper = new UsuarioHelper();
+            UsuarioViewModel usuario = usuarioHelper.Get(id);
+            return View(usuario);
         }
 
-        // POST: UsuarioController/Edit/5
+        // POST: EventoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(UsuarioViewModel usuario)
         {
             try
             {
+                usuarioHelper = new UsuarioHelper();
+                usuario = usuarioHelper.Edit(usuario);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -59,19 +76,25 @@ namespace FrontEnd.Controllers
             }
         }
 
-        // GET: UsuarioController/Delete/5
+        // GET: EventoController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            usuarioHelper = new UsuarioHelper();
+            UsuarioViewModel usuario = usuarioHelper.Get(id);
+
+            return View(usuario);
         }
 
-        // POST: UsuarioController/Delete/5
+        // POST: EventoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(UsuarioViewModel usuario)
         {
             try
             {
+                usuarioHelper = new UsuarioHelper();
+                usuarioHelper.Delete(usuario.IdUsuario);
+
                 return RedirectToAction(nameof(Index));
             }
             catch

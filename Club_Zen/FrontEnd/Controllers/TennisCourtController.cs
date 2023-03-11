@@ -1,36 +1,48 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FrontEnd.Helpers;
+using FrontEnd.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FrontEnd.Controllers
 {
     public class TennisCourtController : Controller
     {
-        // GET: TennisCourtController
+        TennisCourtHelper tennisCourtHelper;
+
+        // GET: EventoController
         public ActionResult Index()
         {
-            return View();
+            tennisCourtHelper = new TennisCourtHelper();
+            List<TennisCourtViewModel> list = tennisCourtHelper.GetAll();
+            return View(list);
         }
 
-        // GET: TennisCourtController/Details/5
+        // GET: EventoController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            tennisCourtHelper = new TennisCourtHelper();
+            TennisCourtViewModel tennisCourt = tennisCourtHelper.Get(id);
+
+            return View(tennisCourt);
         }
 
-        // GET: TennisCourtController/Create
+        // GET: EventoController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: TennisCourtController/Create
+        // POST: EventoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(TennisCourtViewModel tennisCourt)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                tennisCourtHelper = new TennisCourtHelper();
+                tennisCourt = tennisCourtHelper.Create(tennisCourt);
+
+                return RedirectToAction("Details", new { id = tennisCourt.IdTennisCourt });
             }
             catch
             {
@@ -38,19 +50,24 @@ namespace FrontEnd.Controllers
             }
         }
 
-        // GET: TennisCourtController/Edit/5
+        // GET: EventoController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            tennisCourtHelper = new TennisCourtHelper();
+            TennisCourtViewModel tennisCourt = tennisCourtHelper.Get(id);
+            return View(tennisCourt);
         }
 
-        // POST: TennisCourtController/Edit/5
+        // POST: EventoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(TennisCourtViewModel tennisCourt)
         {
             try
             {
+                tennisCourtHelper = new TennisCourtHelper();
+                tennisCourt = tennisCourtHelper.Edit(tennisCourt);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -59,19 +76,25 @@ namespace FrontEnd.Controllers
             }
         }
 
-        // GET: TennisCourtController/Delete/5
+        // GET: EventoController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            tennisCourtHelper = new TennisCourtHelper();
+            TennisCourtViewModel tennisCourt = tennisCourtHelper.Get(id);
+
+            return View(tennisCourt);
         }
 
-        // POST: TennisCourtController/Delete/5
+        // POST: EventoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(TennisCourtViewModel tennisCourt)
         {
             try
             {
+                tennisCourtHelper = new TennisCourtHelper();
+                tennisCourtHelper.Delete(tennisCourt.IdTennisCourt);
+
                 return RedirectToAction(nameof(Index));
             }
             catch

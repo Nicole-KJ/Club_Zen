@@ -72,7 +72,7 @@ namespace FrontEnd.Helpers
             LineaFacturaViewModel LineaFactura;
 
 
-            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/category/", lineaFactura);
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/lineaFactura/", lineaFactura);
             var content = responseMessage.Content.ReadAsStringAsync().Result;
             LineaFactura = JsonConvert.DeserializeObject<LineaFacturaViewModel>(content);
 
@@ -90,7 +90,7 @@ namespace FrontEnd.Helpers
             LineaFacturaViewModel lineaFactura;
 
 
-            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/category/" + id.ToString());
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/lineaFactura/" + id.ToString());
             var content = responseMessage.Content.ReadAsStringAsync().Result;
             lineaFactura = JsonConvert.DeserializeObject<LineaFacturaViewModel>(content);
 

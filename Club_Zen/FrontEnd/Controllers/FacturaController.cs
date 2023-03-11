@@ -1,36 +1,48 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FrontEnd.Helpers;
+using FrontEnd.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FrontEnd.Controllers
 {
     public class FacturaController : Controller
     {
-        // GET: FacturaController
+        FacturaHelper facturaHelper;
+
+        // GET: EventoController
         public ActionResult Index()
         {
-            return View();
+            facturaHelper = new FacturaHelper();
+            List<FacturaViewModel> list = facturaHelper.GetAll();
+            return View(list);
         }
 
-        // GET: FacturaController/Details/5
+        // GET: EventoController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            facturaHelper = new FacturaHelper();
+            FacturaViewModel factura = facturaHelper.Get(id);
+
+            return View(factura);
         }
 
-        // GET: FacturaController/Create
+        // GET: EventoController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: FacturaController/Create
+        // POST: EventoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(FacturaViewModel factura)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                facturaHelper = new FacturaHelper();
+                factura = facturaHelper.Create(factura);
+
+                return RedirectToAction("Details", new { id = factura.IdFactura });
             }
             catch
             {
@@ -38,19 +50,24 @@ namespace FrontEnd.Controllers
             }
         }
 
-        // GET: FacturaController/Edit/5
+        // GET: EventoController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            facturaHelper = new FacturaHelper();
+            FacturaViewModel factura = facturaHelper.Get(id);
+            return View(factura);
         }
 
-        // POST: FacturaController/Edit/5
+        // POST: EventoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(FacturaViewModel factura)
         {
             try
             {
+                facturaHelper = new FacturaHelper();
+                factura = facturaHelper.Edit(factura);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -59,19 +76,25 @@ namespace FrontEnd.Controllers
             }
         }
 
-        // GET: FacturaController/Delete/5
+        // GET: EventoController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            facturaHelper = new FacturaHelper();
+            FacturaViewModel factura = facturaHelper.Get(id);
+
+            return View(factura);
         }
 
-        // POST: FacturaController/Delete/5
+        // POST: EventoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(FacturaViewModel factura)
         {
             try
             {
+                facturaHelper = new FacturaHelper();
+                facturaHelper.Delete(factura.IdFactura);
+
                 return RedirectToAction(nameof(Index));
             }
             catch

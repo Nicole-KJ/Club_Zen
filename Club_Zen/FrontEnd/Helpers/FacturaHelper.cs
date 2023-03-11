@@ -65,5 +65,39 @@ namespace FrontEnd.Helpers
             return FacturaViewModel;
         }
 
+        public FacturaViewModel Edit(FacturaViewModel factura)
+        {
+
+
+            FacturaViewModel Factura;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/factura/", factura);
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            Factura = JsonConvert.DeserializeObject<FacturaViewModel>(content);
+
+
+
+            return Factura;
+        }
+
+
+
+        public FacturaViewModel Delete(int id)
+        {
+
+
+            FacturaViewModel Factura;
+
+
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/factura/" + id.ToString());
+            var content = responseMessage.Content.ReadAsStringAsync().Result;
+            Factura = JsonConvert.DeserializeObject<FacturaViewModel>(content);
+
+
+
+            return Factura;
+        }
+
     }
 }

@@ -1,36 +1,48 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FrontEnd.Helpers;
+using FrontEnd.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FrontEnd.Controllers
 {
     public class RanchitoController : Controller
     {
-        // GET: RanchitoController
+        RanchitoHelper ranchitoHelper;
+
+        // GET: EventoController
         public ActionResult Index()
         {
-            return View();
+            ranchitoHelper = new RanchitoHelper();
+            List<RanchitoViewModel> list = ranchitoHelper.GetAll();
+            return View(list);
         }
 
-        // GET: RanchitoController/Details/5
+        // GET: EventoController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            ranchitoHelper = new RanchitoHelper();
+            RanchitoViewModel ranchito = ranchitoHelper.Get(id);
+
+            return View(ranchito);
         }
 
-        // GET: RanchitoController/Create
+        // GET: EventoController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RanchitoController/Create
+        // POST: EventoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(RanchitoViewModel ranchito)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                ranchitoHelper = new RanchitoHelper();
+                ranchito = ranchitoHelper.Create(ranchito);
+
+                return RedirectToAction("Details", new { id = ranchito.IdRanchito });
             }
             catch
             {
@@ -38,19 +50,24 @@ namespace FrontEnd.Controllers
             }
         }
 
-        // GET: RanchitoController/Edit/5
+        // GET: EventoController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ranchitoHelper = new RanchitoHelper();
+            RanchitoViewModel ranchito = ranchitoHelper.Get(id);
+            return View(ranchito);
         }
 
-        // POST: RanchitoController/Edit/5
+        // POST: EventoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(RanchitoViewModel ranchito)
         {
             try
             {
+                ranchitoHelper = new RanchitoHelper();
+                ranchito = ranchitoHelper.Edit(ranchito);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -59,19 +76,25 @@ namespace FrontEnd.Controllers
             }
         }
 
-        // GET: RanchitoController/Delete/5
+        // GET: EventoController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            ranchitoHelper = new RanchitoHelper();
+            RanchitoViewModel ranchito = ranchitoHelper.Get(id);
+
+            return View(ranchito);
         }
 
-        // POST: RanchitoController/Delete/5
+        // POST: EventoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(RanchitoViewModel ranchito)
         {
             try
             {
+                ranchitoHelper = new RanchitoHelper();
+                ranchitoHelper.Delete(ranchito.IdRanchito);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
