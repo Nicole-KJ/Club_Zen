@@ -20,7 +20,7 @@ namespace FrontEnd.Helpers
         {
             List<RanchitoViewModel> lista = new List<RanchitoViewModel>();
 
-            HttpResponseMessage responseMessage = ServiceRepository.GetResponse("api/ranchito");
+            HttpResponseMessage responseMessage = ServiceRepository.GetResponse("api/Ranchito");
             if (responseMessage != null)
             {
                 var content = responseMessage.Content.ReadAsStringAsync().Result;
@@ -36,16 +36,16 @@ namespace FrontEnd.Helpers
 
         public RanchitoViewModel Get(int id)
         {
-            RanchitoViewModel RanchitoViewModel;
+            RanchitoViewModel Ranchito;
 
 
-            HttpResponseMessage responseMessage = ServiceRepository.GetResponse("api/ranchito/" + id.ToString());
+            HttpResponseMessage responseMessage = ServiceRepository.GetResponse("api/Ranchito/" + id.ToString());
             var content = responseMessage.Content.ReadAsStringAsync().Result;
-            RanchitoViewModel = JsonConvert.DeserializeObject<RanchitoViewModel>(content);
+            Ranchito = JsonConvert.DeserializeObject<RanchitoViewModel>(content);
 
 
 
-            return RanchitoViewModel;
+            return Ranchito;
         }
 
 
@@ -53,16 +53,14 @@ namespace FrontEnd.Helpers
         {
 
 
-            RanchitoViewModel RanchitoViewModel;
+            RanchitoViewModel Ranchito;
 
-
-            HttpResponseMessage responseMessage = ServiceRepository.PostResponse("api/ranchito/", ranchito);
+            HttpResponseMessage responseMessage = ServiceRepository.PostResponse("api/Ranchito/", ranchito);
             var content = responseMessage.Content.ReadAsStringAsync().Result;
-            RanchitoViewModel = JsonConvert.DeserializeObject<RanchitoViewModel>(content);
+            Ranchito = JsonConvert.DeserializeObject<RanchitoViewModel>(content);
 
 
-
-            return RanchitoViewModel;
+            return Ranchito;
         }
 
         public RanchitoViewModel Edit(RanchitoViewModel ranchito)
@@ -72,7 +70,7 @@ namespace FrontEnd.Helpers
             RanchitoViewModel Ranchito;
 
 
-            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/ranchito/", ranchito);
+            HttpResponseMessage responseMessage = ServiceRepository.PutResponse("api/Ranchito/", ranchito);
             var content = responseMessage.Content.ReadAsStringAsync().Result;
             Ranchito = JsonConvert.DeserializeObject<RanchitoViewModel>(content);
 
@@ -90,7 +88,7 @@ namespace FrontEnd.Helpers
             RanchitoViewModel Ranchito;
 
 
-            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/ranchito/" + id.ToString());
+            HttpResponseMessage responseMessage = ServiceRepository.DeleteResponse("api/Ranchito/" + id.ToString());
             var content = responseMessage.Content.ReadAsStringAsync().Result;
             Ranchito = JsonConvert.DeserializeObject<RanchitoViewModel>(content);
 
