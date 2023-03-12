@@ -1,0 +1,48 @@
+﻿@model IEnumerable<FrontEnd.Models.MesaViewModel>
+
+@{
+    ViewData["Title"] = "Mesas";
+}
+
+<h1>Mesas</h1>
+
+<p>
+    <a asp-action="Create">Crear</a>
+</p>
+
+<table class="table" style="color: white;">
+    <thead>
+        <tr>
+            <th>ID Mesa</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            <tr>
+                <td colspan="3" style="text-align: center;">No hay mesas registradas</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdMesa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IdMesa }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.IdMesa }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.IdMesa })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
