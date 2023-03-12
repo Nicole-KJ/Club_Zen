@@ -1,0 +1,80 @@
+﻿@model IEnumerable<FrontEnd.Models.UsuarioViewModel>
+
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<h1>Usuarios</h1>
+
+<p>
+    <a asp-action="Create">Crear</a>
+</p>
+
+<table class="table" style="color: white;">
+    <thead>
+        <tr>
+            <th>ID Usuario</th>
+            <th>ID Permiso</th>
+            <th>ID Estado</th>
+            <th>ID Club Member</th>
+            <th>Idenficiación (Cédula)</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Correo electrónico</th>
+            <th>Fecha de Registro</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            <tr>
+                <td colspan="11" style="text-align: center;">No hay usuarios registrados</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdUsuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdPermiso)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdEstado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdClubMember)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cedula)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Correo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaRegistro)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IdUsuario }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.IdUsuario }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.IdUsuario })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
