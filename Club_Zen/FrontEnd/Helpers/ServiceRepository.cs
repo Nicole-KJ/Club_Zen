@@ -15,7 +15,7 @@ namespace FrontEnd.Helpers
         public ServiceRepository()
         {
             Client = new HttpClient();
-            Client.BaseAddress = new Uri("http://localhost:5033");
+            Client.BaseAddress = new Uri("https://localhost:7032");
 
         }
         public HttpResponseMessage GetResponse(string url)
