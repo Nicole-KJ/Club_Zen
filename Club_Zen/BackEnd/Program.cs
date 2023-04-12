@@ -1,7 +1,9 @@
 
+using BackEnd.Middleware;
 using Entities;
 using Entities.Utilities;
 using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -30,7 +32,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseMiddleware<ApiKeyMiddleware>();
 
 app.UseAuthorization();
 
