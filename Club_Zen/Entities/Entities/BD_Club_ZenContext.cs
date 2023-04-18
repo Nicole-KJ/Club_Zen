@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Entities.Authentication;
+using Entities.Utilities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Entities.Entities
 {
-    public partial class BD_Club_ZenContext : DbContext
+    public partial class BD_Club_ZenContext : IdentityDbContext<ApplicationUser>
     {
         public BD_Club_ZenContext()
         {
@@ -36,14 +39,13 @@ namespace Entities.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-
-            }
+            optionsBuilder.UseSqlServer(Util.ConnectionString);
+            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<ClubMember>(entity =>
             {
                 entity.HasKey(e => e.IdClubMember);
