@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public ReservacionRanchitoController()
         {
-            reservacionRanchitoDAL = new ReservacionRanchitoDALImpl(new Entities.BD_Club_ZenContext());
+            reservacionRanchitoDAL = new ReservacionRanchitoDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.ReservacionRanchito> reservacionRanchitos = reservacionRanchitoDAL.GetAll();
+            IEnumerable<ReservacionRanchito> reservacionRanchitos = reservacionRanchitoDAL.GetAll();
 
 
             return new JsonResult(reservacionRanchitos);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.ReservacionRanchito reservacionRanchito;
+            ReservacionRanchito reservacionRanchito;
             reservacionRanchito = reservacionRanchitoDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<ReservacionRanchitoController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.ReservacionRanchito reservacionRanchito)
+        public JsonResult Post([FromBody] ReservacionRanchito reservacionRanchito)
         {
             reservacionRanchitoDAL.Add(reservacionRanchito);
             return new JsonResult(reservacionRanchito);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<ReservacionRanchitoController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.ReservacionRanchito reservacionRanchito)
+        public JsonResult Put([FromBody] ReservacionRanchito reservacionRanchito)
         {
 
             reservacionRanchitoDAL.Update(reservacionRanchito);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.ReservacionRanchito reservacionRanchito = new Entities.ReservacionRanchito { IdReservacionRanchito = id };
+            ReservacionRanchito reservacionRanchito = new ReservacionRanchito { IdReservacionRanchito = id };
             reservacionRanchitoDAL.Remove(reservacionRanchito);
 
             return new  JsonResult(reservacionRanchito);

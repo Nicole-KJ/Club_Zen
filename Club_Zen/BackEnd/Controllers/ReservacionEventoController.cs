@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public ReservacionEventoController()
         {
-            reservacionEventoDAL = new ReservacionEventoDALImpl(new Entities.BD_Club_ZenContext());
+            reservacionEventoDAL = new ReservacionEventoDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.ReservacionEvento> reservacionEventos = reservacionEventoDAL.GetAll();
+            IEnumerable<ReservacionEvento> reservacionEventos = reservacionEventoDAL.GetAll();
 
 
             return new JsonResult(reservacionEventos);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.ReservacionEvento reservacionEvento;
+            ReservacionEvento reservacionEvento;
             reservacionEvento = reservacionEventoDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<ReservacionEventoController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.ReservacionEvento reservacionEvento)
+        public JsonResult Post([FromBody] ReservacionEvento reservacionEvento)
         {
             reservacionEventoDAL.Add(reservacionEvento);
             return new JsonResult(reservacionEvento);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<ReservacionEventoController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.ReservacionEvento reservacionEvento)
+        public JsonResult Put([FromBody] ReservacionEvento reservacionEvento)
         {
 
             reservacionEventoDAL.Update(reservacionEvento);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.ReservacionEvento reservacionEvento = new Entities.ReservacionEvento { IdReservacionEvento = id };
+            ReservacionEvento reservacionEvento = new ReservacionEvento { IdReservacionEvento = id };
             reservacionEventoDAL.Remove(reservacionEvento);
 
             return new  JsonResult(reservacionEvento);

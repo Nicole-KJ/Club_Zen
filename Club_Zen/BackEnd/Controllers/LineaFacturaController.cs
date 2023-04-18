@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public LineaFacturaController()
         {
-            lineaFacturaDAL = new LineaFacturaDALImpl(new Entities.BD_Club_ZenContext());
+            lineaFacturaDAL = new LineaFacturaDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.LineaFactura> lineafacturas = lineaFacturaDAL.GetAll();
+            IEnumerable<LineaFactura> lineafacturas = lineaFacturaDAL.GetAll();
 
 
             return new JsonResult(lineafacturas);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.LineaFactura lineafactura;
+            LineaFactura lineafactura;
             lineafactura = lineaFacturaDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<LineaFacturaController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.LineaFactura lineafactura)
+        public JsonResult Post([FromBody] LineaFactura lineafactura)
         {
             lineaFacturaDAL.Add(lineafactura);
             return new JsonResult(lineafactura);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<LineaFacturaController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.LineaFactura lineafactura)
+        public JsonResult Put([FromBody] LineaFactura lineafactura)
         {
 
             lineaFacturaDAL.Update(lineafactura);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.LineaFactura lineafactura = new Entities.LineaFactura { IdLinea = id };
+            LineaFactura lineafactura = new LineaFactura { IdLinea = id };
             lineaFacturaDAL.Remove(lineafactura);
 
             return new  JsonResult(lineafactura);
