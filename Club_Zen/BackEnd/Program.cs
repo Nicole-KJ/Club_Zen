@@ -1,6 +1,6 @@
 
 using BackEnd.Middleware;
-using Entities;
+using Entities.Entities;
 using Entities.Utilities;
 using Microsoft.EntityFrameworkCore;
 

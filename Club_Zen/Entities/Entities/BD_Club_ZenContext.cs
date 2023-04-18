@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Entities.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Entities
+namespace Entities.Entities
 {
     public partial class BD_Club_ZenContext : DbContext
     {
@@ -31,14 +30,16 @@ namespace Entities
         public virtual DbSet<ReservacionEvento> ReservacionEventos { get; set; } = null!;
         public virtual DbSet<ReservacionMesa> ReservacionMesas { get; set; } = null!;
         public virtual DbSet<ReservacionRanchito> ReservacionRanchitos { get; set; } = null!;
-        public virtual DbSet<ReservacionTennis> ReservacionTennis { get; set; } = null!;
+        public virtual DbSet<ReservacionTenni> ReservacionTennis { get; set; } = null!;
         public virtual DbSet<TennisCourt> TennisCourts { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(Util.ConnectionString);
-            base.OnConfiguring(optionsBuilder);
+            if (!optionsBuilder.IsConfigured)
+            {
+
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -340,7 +341,7 @@ namespace Entities
                     .HasConstraintName("FK_Reservacion_Ranchito_Usuarios");
             });
 
-            modelBuilder.Entity<ReservacionTennis>(entity =>
+            modelBuilder.Entity<ReservacionTenni>(entity =>
             {
                 entity.HasKey(e => e.IdReservacionTennis);
 

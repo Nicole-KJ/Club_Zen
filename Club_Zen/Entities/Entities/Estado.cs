@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Entities
+namespace Entities.Entities
 {
-    public partial class Permiso
+    public partial class Estado
     {
-        public Permiso()
+        public Estado()
         {
             Usuarios = new HashSet<Usuario>();
         }
 
-        public int IdPermiso { get; set; }
-        public string Desc { get; set; } = null!;
+        public int IdEstado { get; set; }
+        public string Estado1 { get; set; } = null!;
 
         public virtual ICollection<Usuario> Usuarios { get; set; }
     }

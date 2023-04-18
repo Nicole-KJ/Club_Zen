@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Entities
+namespace Entities.Entities
 {
     public partial class Usuario
     {
@@ -12,7 +12,7 @@ namespace Entities
             ReservacionEventos = new HashSet<ReservacionEvento>();
             ReservacionMesas = new HashSet<ReservacionMesa>();
             ReservacionRanchitos = new HashSet<ReservacionRanchito>();
-            ReservacionTennis = new HashSet<ReservacionTennis>();
+            ReservacionTennis = new HashSet<ReservacionTenni>();
         }
 
         public int IdUsuario { get; set; }
@@ -35,6 +35,6 @@ namespace Entities
         public virtual ICollection<ReservacionEvento> ReservacionEventos { get; set; }
         public virtual ICollection<ReservacionMesa> ReservacionMesas { get; set; }
         public virtual ICollection<ReservacionRanchito> ReservacionRanchitos { get; set; }
-        public virtual ICollection<ReservacionTennis> ReservacionTennis { get; set; }
+        public virtual ICollection<ReservacionTenni> ReservacionTennis { get; set; }
     }
 }
