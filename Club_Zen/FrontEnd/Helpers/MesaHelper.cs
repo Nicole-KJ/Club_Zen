@@ -14,6 +14,12 @@ namespace FrontEnd.Helpers
 
         }
 
+        public MesaHelper(string token)
+        {
+            ServiceRepository = new ServiceRepository(token);
+
+        }
+
 
 
         public List<MesaViewModel> GetAll()

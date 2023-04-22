@@ -12,6 +12,8 @@ namespace FrontEnd.Controllers
         // GET: EventoController
         public ActionResult Index()
         {
+            string token = HttpContext.Session.GetString("token");
+
             mesaHelper = new MesaHelper();
             List<MesaViewModel> list = mesaHelper.GetAll();
             return View(list);

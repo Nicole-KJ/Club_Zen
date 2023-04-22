@@ -1,4 +1,5 @@
-﻿using FrontEnd.Models;
+﻿using FrontEnd.Helpers;
+using FrontEnd.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -13,8 +14,17 @@ namespace FrontEnd.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Menu()
         {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(UsuarioAViewModel usuario)
+        {
+            SecurityHelper securityHelper = new SecurityHelper();
+            TokenModel tokenModel= securityHelper.Login(usuario);
+            HttpContext.Session.SetString("token", tokenModel.Token);
+
             return View();
         }
 
