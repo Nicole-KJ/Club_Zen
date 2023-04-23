@@ -438,7 +438,7 @@ namespace Entities.Entities
                     .HasForeignKey(d => d.IdClubMember)
                     .HasConstraintName("FK_Usuarios_Club_Member");
 
-                entity.HasOne(d => d.IdEstadoNavigation)
+                /*entity.HasOne(d => d.IdEstadoNavigation)
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.IdEstado)
                     .OnDelete(DeleteBehavior.ClientSetNull)
@@ -449,6 +449,7 @@ namespace Entities.Entities
                     .HasForeignKey(d => d.IdPermiso)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Usuarios_Permisos");
+                */
             });
 
             OnModelCreatingPartial(modelBuilder);
