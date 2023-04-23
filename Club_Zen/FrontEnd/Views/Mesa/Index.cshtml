@@ -10,12 +10,17 @@
     <a asp-action="Create">Crear</a>
 </p>
 
-<table class="table" style="color: white;">
+ <table class="table"style="color: white;">
     <thead>
         <tr>
-            <th>ID Mesa</th>
-            <th>Cantidad</th>
-            <th>Acciones</th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+           
+            <th></th>
         </tr>
     </thead>
     <tbody>

@@ -21,12 +21,19 @@ namespace FrontEnd.Controllers
         [HttpPost]
         public IActionResult Index(UsuarioAViewModel usuario)
         {
-            SecurityHelper securityHelper = new SecurityHelper();
+            try
+            {
+                SecurityHelper securityHelper = new SecurityHelper();
             TokenModel tokenModel = securityHelper.Login(usuario);
             HttpContext.Session.SetString("token", tokenModel.Token);
-            return RedirectToAction("Menu");
+            return RedirectToAction("Index");
+                
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
-            
         }
 
         public IActionResult Privacy()

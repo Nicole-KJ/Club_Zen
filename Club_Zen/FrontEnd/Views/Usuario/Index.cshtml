@@ -13,24 +13,45 @@
 <table class="table" style="color: white;">
     <thead>
         <tr>
-            <th>ID Usuario</th>
-            <th>ID Permiso</th>
-            <th>ID Estado</th>
-            <th>ID Club Member</th>
-            <th>Idenficiación (Cédula)</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Fecha de Nacimiento</th>
-            <th>Correo electrónico</th>
-            <th>Fecha de Registro</th>
-            <th>Acciones</th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPermiso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClubMember)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRegistro)
+            </th>
+
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @if (Model == null)
         {
             <tr>
-                <td colspan="11" style="text-align: center;">No hay usuarios registrados</td>
+                <td colspan="3" style="text-align: center;">No hay mesas registradas</td>
             </tr>
         }
         else

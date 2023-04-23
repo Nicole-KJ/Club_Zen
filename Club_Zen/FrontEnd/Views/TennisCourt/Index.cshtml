@@ -10,19 +10,24 @@
 <p>
     <a asp-action="Create">Crear nuevo</a>
 </p>
-<table style="color:white" class="table">
+<table class="table" style="color: white;">
     <thead>
         <tr>
-            <th>ID Tennis Court</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTennisCourt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desc)
+            </th>
+
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @if (Model == null)
         {
             <tr>
-                <td colspan="3">No hay elementos</td>
+                <td colspan="3" style="text-align: center;">No hay mesas registradas</td>
             </tr>
         }
         else

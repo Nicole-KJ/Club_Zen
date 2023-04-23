@@ -5,10 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Detalle</h1>
 
 <div>
-    <h4>RanchitoViewModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -26,6 +25,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdRanchito }) |
     <a asp-action="Index">Volver</a>
 </div>

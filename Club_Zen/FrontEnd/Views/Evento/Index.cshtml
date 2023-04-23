@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Eventos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear</a>
 </p>
 <table style="color:white" class="table">
     <thead>
@@ -41,7 +41,7 @@
         @if (Model == null)
         {
             <tr>
-                <td colspan="5">No hay elementos</td>
+                <td colspan="3" style="text-align: center;">No hay mesas registradas</td>
             </tr>
         }
         else
@@ -71,9 +71,9 @@
                         @Html.DisplayFor(modelItem => item.AsistenciaReservada)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IdEvento }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IdEvento }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IdEvento })
                     </td>
                 </tr>
             }
