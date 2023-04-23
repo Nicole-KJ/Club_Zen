@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Entities
+namespace Entities.Entities
 {
     public partial class TennisCourt
     {
         public TennisCourt()
         {
-            ReservacionTennis = new HashSet<ReservacionTennis>();
+            ReservacionTennis = new HashSet<ReservacionTenni>();
         }
 
         public int IdTennisCourt { get; set; }
         public string Desc { get; set; } = null!;
 
-        public virtual ICollection<ReservacionTennis> ReservacionTennis { get; set; }
+        public virtual ICollection<ReservacionTenni> ReservacionTennis { get; set; }
     }
 }

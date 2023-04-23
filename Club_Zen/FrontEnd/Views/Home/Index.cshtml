@@ -1,6 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Club Zen";
 }
+<script>
+  // Verificar si ya se hizo la redirección durante esta sesión
+  if (!sessionStorage.getItem('redirected')) {
+    // Almacenar un valor de bandera para indicar que ya se hizo la redirección
+    sessionStorage.setItem('redirected', true);
+    // Redirigir a la página que deseas mostrar antes
+    window.location.replace('Home/Privacy');
+  }
+</script>
 
 <!-- ======= Gallery Section ======= -->
 <section id="gallery" class="gallery">

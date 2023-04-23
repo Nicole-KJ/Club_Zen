@@ -1,5 +1,5 @@
 ﻿using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,11 +26,11 @@ namespace DAL.Implementations
 
         }
 
-        public bool Add(ReservacionTennis entity)
+        public bool Add(ReservacionTenni entity)
         {
             try
             {
-                using (UnidadDeTrabajo<ReservacionTennis> unidad = new UnidadDeTrabajo<ReservacionTennis>(context))
+                using (UnidadDeTrabajo<ReservacionTenni> unidad = new UnidadDeTrabajo<ReservacionTenni>(context))
                 {
                     unidad.genericDAL.Add(entity);
                     unidad.Complete();
@@ -46,20 +46,20 @@ namespace DAL.Implementations
             }
         }
 
-        public void AddRange(IEnumerable<ReservacionTennis> entities)
+        public void AddRange(IEnumerable<ReservacionTenni> entities)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ReservacionTennis> Find(Expression<Func<ReservacionTennis, bool>> predicate)
+        public IEnumerable<ReservacionTenni> Find(Expression<Func<ReservacionTenni, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public ReservacionTennis Get(int id)
+        public ReservacionTenni Get(int id)
         {
-            ReservacionTennis category;
-            using (UnidadDeTrabajo<ReservacionTennis> unidad = new UnidadDeTrabajo<ReservacionTennis>(context))
+            ReservacionTenni category;
+            using (UnidadDeTrabajo<ReservacionTenni> unidad = new UnidadDeTrabajo<ReservacionTenni>(context))
             {
                
                 category= unidad.genericDAL.Get(id);
@@ -68,12 +68,12 @@ namespace DAL.Implementations
 
         }
 
-        public IEnumerable<ReservacionTennis> GetAll()
+        public IEnumerable<ReservacionTenni> GetAll()
         {
             try
             {
-                IEnumerable<ReservacionTennis> categories;
-                using (UnidadDeTrabajo<ReservacionTennis> unidad = new UnidadDeTrabajo<ReservacionTennis>(context))
+                IEnumerable<ReservacionTenni> categories;
+                using (UnidadDeTrabajo<ReservacionTenni> unidad = new UnidadDeTrabajo<ReservacionTenni>(context))
                 {
                     categories = unidad.genericDAL.GetAll();
                 }
@@ -86,12 +86,12 @@ namespace DAL.Implementations
             }
         }
 
-        public bool Remove(ReservacionTennis entity)
+        public bool Remove(ReservacionTenni entity)
         {
             bool result = false;
             try
             {
-                using (UnidadDeTrabajo<ReservacionTennis> unidad = new UnidadDeTrabajo<ReservacionTennis>(context))
+                using (UnidadDeTrabajo<ReservacionTenni> unidad = new UnidadDeTrabajo<ReservacionTenni>(context))
                 {
                     unidad.genericDAL.Remove(entity);
                     result = unidad.Complete();
@@ -107,23 +107,23 @@ namespace DAL.Implementations
             return result;
         }
 
-        public void RemoveRange(IEnumerable<ReservacionTennis> entities)
+        public void RemoveRange(IEnumerable<ReservacionTenni> entities)
         {
             throw new NotImplementedException();
         }
 
-        public ReservacionTennis SingleOrDefault(Expression<Func<ReservacionTennis, bool>> predicate)
+        public ReservacionTenni SingleOrDefault(Expression<Func<ReservacionTenni, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(ReservacionTennis entity)
+        public bool Update(ReservacionTenni entity)
         {
             bool result = false;
 
             try
             {
-                using (UnidadDeTrabajo<ReservacionTennis> unidad = new UnidadDeTrabajo<ReservacionTennis>(context))
+                using (UnidadDeTrabajo<ReservacionTenni> unidad = new UnidadDeTrabajo<ReservacionTenni>(context))
                 {
                     unidad.genericDAL.Update(entity);
                     result = unidad.Complete();

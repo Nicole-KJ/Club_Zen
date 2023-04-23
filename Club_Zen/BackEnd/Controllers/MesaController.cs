@@ -1,6 +1,6 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd;
 
@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public MesaController()
         {
-            mesaDAL = new MesaDALImpl(new Entities.BD_Club_ZenContext());
+            mesaDAL = new MesaDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.Mesa> mesas = mesaDAL.GetAll();
+            IEnumerable<Mesa> mesas = mesaDAL.GetAll();
 
 
             return new JsonResult(mesas);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.Mesa mesa;
+            Mesa mesa;
             mesa = mesaDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<MesaController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.Mesa mesa)
+        public JsonResult Post([FromBody] Mesa mesa)
         {
             mesaDAL.Add(mesa);
             return new JsonResult(mesa);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<MesaController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.Mesa mesa)
+        public JsonResult Put([FromBody] Mesa mesa)
         {
 
             mesaDAL.Update(mesa);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.Mesa mesa = new Entities.Mesa { IdMesa = id };
+            Mesa mesa = new Mesa { IdMesa = id };
             mesaDAL.Remove(mesa);
 
             return new  JsonResult(mesa);

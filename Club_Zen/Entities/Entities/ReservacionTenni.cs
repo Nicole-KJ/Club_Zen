@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Entities
+namespace Entities.Entities
 {
-    public partial class ReservacionTennis
+    public partial class ReservacionTenni
     {
         public int IdReservacionTennis { get; set; }
         public int IdTennisCourt { get; set; }

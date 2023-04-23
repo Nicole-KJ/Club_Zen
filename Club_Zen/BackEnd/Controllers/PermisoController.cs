@@ -1,6 +1,6 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd;
 
@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public PermisoController()
         {
-            permisoDAL = new PermisoDALImpl(new Entities.BD_Club_ZenContext());
+            permisoDAL = new PermisoDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.Permiso> permisos = permisoDAL.GetAll();
+            IEnumerable<Permiso> permisos = permisoDAL.GetAll();
 
 
             return new JsonResult(permisos);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.Permiso permiso;
+             Permiso permiso;
             permiso = permisoDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<PermisoController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.Permiso permiso)
+        public JsonResult Post([FromBody] Permiso permiso)
         {
             permisoDAL.Add(permiso);
             return new JsonResult(permiso);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<PermisoController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.Permiso permiso)
+        public JsonResult Put([FromBody] Permiso permiso)
         {
 
             permisoDAL.Update(permiso);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.Permiso permiso = new Entities.Permiso { IdPermiso = id };
+            Permiso permiso = new Permiso { IdPermiso = id };
             permisoDAL.Remove(permiso);
 
             return new  JsonResult(permiso);

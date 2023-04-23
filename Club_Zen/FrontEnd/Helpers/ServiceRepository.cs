@@ -15,7 +15,17 @@ namespace FrontEnd.Helpers
         public ServiceRepository()
         {
             Client = new HttpClient();
-            Client.BaseAddress = new Uri("http://localhost:5033");
+            Client.BaseAddress = new Uri("https://localhost:7032");
+            Client.DefaultRequestHeaders.Add("ApiKey", "Proyecto123");
+
+        }
+        public ServiceRepository(string token)
+        {
+            Client = new HttpClient();
+            Client.BaseAddress = new Uri("https://localhost:7032");
+            Client.DefaultRequestHeaders.Add("ApiKey", "12345");
+            Client.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
         }
         public HttpResponseMessage GetResponse(string url)

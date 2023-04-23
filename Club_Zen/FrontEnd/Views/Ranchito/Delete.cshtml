@@ -5,11 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Delete</h1>
+<h1>Eliminar</h1>
 
 <h3>¿Esta seguro que desea eliminar?</h3>
 <div>
-    <h4>RanchitoViewModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -27,6 +26,7 @@
     </dl>
     
     <form asp-action="Delete">
+        @Html.HiddenFor(Model=>Model.IdRanchito)
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Volver</a>
     </form>

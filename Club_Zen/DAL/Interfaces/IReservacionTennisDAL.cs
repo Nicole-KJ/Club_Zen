@@ -1,4 +1,4 @@
-﻿using Entities;
+﻿using Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IReservacionTennisDAL: IDALGenerico<ReservacionTennis>
+    public interface IReservacionTennisDAL: IDALGenerico<ReservacionTenni>
     {
 
     }

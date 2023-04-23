@@ -1,6 +1,6 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd;
 
@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public ReservacionMesaController()
         {
-            reservacionMesaDAL = new ReservacionMesaDALImpl(new Entities.BD_Club_ZenContext());
+            reservacionMesaDAL = new ReservacionMesaDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.ReservacionMesa> reservacionMesas = reservacionMesaDAL.GetAll();
+            IEnumerable<ReservacionMesa> reservacionMesas = reservacionMesaDAL.GetAll();
 
 
             return new JsonResult(reservacionMesas);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.ReservacionMesa reservacionMesa;
+         ReservacionMesa reservacionMesa;
             reservacionMesa = reservacionMesaDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<ReservacionMesaController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.ReservacionMesa reservacionMesa)
+        public JsonResult Post([FromBody] ReservacionMesa reservacionMesa)
         {
             reservacionMesaDAL.Add(reservacionMesa);
             return new JsonResult(reservacionMesa);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<ReservacionMesaController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.ReservacionMesa reservacionMesa)
+        public JsonResult Put([FromBody] ReservacionMesa reservacionMesa)
         {
 
             reservacionMesaDAL.Update(reservacionMesa);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.ReservacionMesa reservacionMesa = new Entities.ReservacionMesa { IdReservacionMesa = id };
+            ReservacionMesa reservacionMesa = new ReservacionMesa { IdReservacionMesa = id };
             reservacionMesaDAL.Remove(reservacionMesa);
 
             return new  JsonResult(reservacionMesa);

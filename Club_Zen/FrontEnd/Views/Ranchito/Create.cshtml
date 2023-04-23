@@ -5,9 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Crear</h1>
 
-<h4>RanchitoViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             
             <div class="form-group">
-                <label asp-for="Desc" class="control-label"></label>
+                <label asp-for="Desc" class="control-label">Descripcion</label>
                 <input asp-for="Desc" class="form-control" />
                 <span asp-validation-for="Desc" class="text-danger"></span>
             </div>

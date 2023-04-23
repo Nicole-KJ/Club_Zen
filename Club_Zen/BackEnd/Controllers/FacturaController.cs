@@ -1,6 +1,6 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd;
 
@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public FacturaController()
         {
-            facturaDAL = new FacturaDALImpl(new Entities.BD_Club_ZenContext());
+            facturaDAL = new FacturaDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.Factura> facturas = facturaDAL.GetAll();
+            IEnumerable<Factura> facturas = facturaDAL.GetAll();
 
 
             return new JsonResult(facturas);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.Factura factura;
+            Factura factura;
             factura = facturaDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<FacturaController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.Factura factura)
+        public JsonResult Post([FromBody] Factura factura)
         {
             facturaDAL.Add(factura);
             return new JsonResult(factura);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<FacturaController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.Factura factura)
+        public JsonResult Put([FromBody] Factura factura)
         {
 
             facturaDAL.Update(factura);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.Factura factura = new Entities.Factura { IdFactura = id };
+            Factura factura = new Factura { IdFactura = id };
             facturaDAL.Remove(factura);
 
             return new  JsonResult(factura);

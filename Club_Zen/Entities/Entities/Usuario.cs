@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Entities
+namespace Entities.Entities
 {
     public partial class Usuario
     {
@@ -12,7 +12,7 @@ namespace Entities
             ReservacionEventos = new HashSet<ReservacionEvento>();
             ReservacionMesas = new HashSet<ReservacionMesa>();
             ReservacionRanchitos = new HashSet<ReservacionRanchito>();
-            ReservacionTennis = new HashSet<ReservacionTennis>();
+            ReservacionTennis = new HashSet<ReservacionTenni>();
         }
 
         public int IdUsuario { get; set; }
@@ -25,16 +25,16 @@ namespace Entities
         public DateTime FechaNacimiento { get; set; }
         public string Correo { get; set; } = null!;
         public string Contrasena { get; set; } = null!;
-        public byte[] FechaRegistro { get; set; } = null!;
+        public DateTime FechaRegistro { get; set; }
 
         public virtual ClubMember? IdClubMemberNavigation { get; set; }
-        public virtual Estado IdEstadoNavigation { get; set; } = null!;
-        public virtual Permiso IdPermisoNavigation { get; set; } = null!;
+        //public virtual Estado IdEstadoNavigation { get; set; } 
+        //public virtual Permiso IdPermisoNavigation { get; set; } 
         public virtual ICollection<Factura> Facturas { get; set; }
         public virtual ICollection<MetodoPago> MetodoPagos { get; set; }
         public virtual ICollection<ReservacionEvento> ReservacionEventos { get; set; }
         public virtual ICollection<ReservacionMesa> ReservacionMesas { get; set; }
         public virtual ICollection<ReservacionRanchito> ReservacionRanchitos { get; set; }
-        public virtual ICollection<ReservacionTennis> ReservacionTennis { get; set; }
+        public virtual ICollection<ReservacionTenni> ReservacionTennis { get; set; }
     }
 }

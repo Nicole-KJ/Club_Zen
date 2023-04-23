@@ -1,6 +1,6 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd;
 
@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public RanchitoController()
         {
-            ranchitoDAL = new RanchitoDALImpl(new Entities.BD_Club_ZenContext());
+            ranchitoDAL = new RanchitoDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.Ranchito> ranchitos = ranchitoDAL.GetAll();
+            IEnumerable<Ranchito> ranchitos = ranchitoDAL.GetAll();
 
 
             return new JsonResult(ranchitos);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.Ranchito ranchito;
+            Ranchito ranchito;
             ranchito = ranchitoDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<RanchitoController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.Ranchito ranchito)
+        public JsonResult Post([FromBody] Ranchito ranchito)
         {
             ranchitoDAL.Add(ranchito);
             return new JsonResult(ranchito);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<RanchitoController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.Ranchito ranchito)
+        public JsonResult Put([FromBody] Ranchito ranchito)
         {
 
             ranchitoDAL.Update(ranchito);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.Ranchito ranchito = new Entities.Ranchito { IdRanchito = id };
+            Ranchito ranchito = new Ranchito { IdRanchito = id };
             ranchitoDAL.Remove(ranchito);
 
             return new  JsonResult(ranchito);

@@ -1,6 +1,6 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd;
 
@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public EstadoController()
         {
-            estadoDAL = new EstadoDALImpl(new Entities.BD_Club_ZenContext());
+            estadoDAL = new EstadoDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.Estado> estados = estadoDAL.GetAll();
+            IEnumerable<Estado> estados = estadoDAL.GetAll();
 
 
             return new JsonResult(estados);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.Estado estado;
+            Estado estado;
             estado = estadoDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<EstadoController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.Estado estado)
+        public JsonResult Post([FromBody] Estado estado)
         {
             estadoDAL.Add(estado);
             return new JsonResult(estado);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<EstadoController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.Estado estado)
+        public JsonResult Put([FromBody] Estado estado)
         {
 
             estadoDAL.Update(estado);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.Estado estado = new Entities.Estado { IdEstado = id };
+            Estado estado = new Estado { IdEstado = id };
             estadoDAL.Remove(estado);
 
             return new  JsonResult(estado);

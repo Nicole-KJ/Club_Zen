@@ -13,6 +13,11 @@ namespace FrontEnd.Helpers
             ServiceRepository = new ServiceRepository();
 
         }
+        public MesaHelper(string token)
+        {
+            ServiceRepository = new ServiceRepository(token);
+
+        }
 
 
 

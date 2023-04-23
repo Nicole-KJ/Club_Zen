@@ -1,6 +1,6 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd;
 
@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public TennisCourtController()
         {
-            tennisCourtDAL = new TennisCourtDALImpl(new Entities.BD_Club_ZenContext());
+            tennisCourtDAL = new TennisCourtDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.TennisCourt> tennisCourts = tennisCourtDAL.GetAll();
+            IEnumerable<TennisCourt> tennisCourts = tennisCourtDAL.GetAll();
 
 
             return new JsonResult(tennisCourts);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.TennisCourt tennisCourt;
+            TennisCourt tennisCourt;
             tennisCourt = tennisCourtDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<TennisCourtController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.TennisCourt tennisCourt)
+        public JsonResult Post([FromBody] TennisCourt tennisCourt)
         {
             tennisCourtDAL.Add(tennisCourt);
             return new JsonResult(tennisCourt);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<TennisCourtController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.TennisCourt tennisCourt)
+        public JsonResult Put([FromBody] TennisCourt tennisCourt)
         {
 
             tennisCourtDAL.Update(tennisCourt);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.TennisCourt tennisCourt = new Entities.TennisCourt { IdTennisCourt = id };
+            TennisCourt tennisCourt = new TennisCourt { IdTennisCourt = id };
             tennisCourtDAL.Remove(tennisCourt);
 
             return new  JsonResult(tennisCourt);

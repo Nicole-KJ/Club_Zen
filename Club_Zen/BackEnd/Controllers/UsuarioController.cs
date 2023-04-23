@@ -1,6 +1,6 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd;
 
@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public UsuarioController()
         {
-            usuarioDAL = new UsuarioDALImpl(new Entities.BD_Club_ZenContext());
+            usuarioDAL = new UsuarioDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.Usuario> usuarios = usuarioDAL.GetAll();
+            IEnumerable<Usuario> usuarios = usuarioDAL.GetAll();
 
 
             return new JsonResult(usuarios);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.Usuario usuario;
+            Usuario usuario;
             usuario = usuarioDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<TennisCourtController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.Usuario usuario)
+        public JsonResult Post([FromBody] Usuario usuario)
         {
             usuarioDAL.Add(usuario);
             return new JsonResult(usuario);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<TennisCourtController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.Usuario usuario)
+        public JsonResult Put([FromBody] Usuario usuario)
         {
 
             usuarioDAL.Update(usuario);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.Usuario usuario = new Entities.Usuario { IdUsuario = id };
+            Usuario usuario = new Usuario { IdUsuario = id };
             usuarioDAL.Remove(usuario);
 
             return new  JsonResult(usuario);

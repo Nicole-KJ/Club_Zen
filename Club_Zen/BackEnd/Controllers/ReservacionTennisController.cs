@@ -1,6 +1,6 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd;
 
@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public ReservacionTennisController()
         {
-            reservacionTennisDAL = new ReservacionTennisDALImpl(new Entities.BD_Club_ZenContext());
+            reservacionTennisDAL = new ReservacionTennisDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.ReservacionTennis> reservacionTennies = reservacionTennisDAL.GetAll();
+            IEnumerable<ReservacionTenni> reservacionTennies = reservacionTennisDAL.GetAll();
 
 
             return new JsonResult(reservacionTennies);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.ReservacionTennis reservacionTennis;
+            ReservacionTenni reservacionTennis;
             reservacionTennis = reservacionTennisDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<ReservacionTennisController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.ReservacionTennis reservacionTennis)
+        public JsonResult Post([FromBody] ReservacionTenni reservacionTennis)
         {
             reservacionTennisDAL.Add(reservacionTennis);
             return new JsonResult(reservacionTennis);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<ReservacionTennisController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.ReservacionTennis reservacionTennis)
+        public JsonResult Put([FromBody] ReservacionTenni reservacionTennis)
         {
 
             reservacionTennisDAL.Update(reservacionTennis);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.ReservacionTennis reservacionTennis = new Entities.ReservacionTennis { IdReservacionTennis = id };
+            ReservacionTenni reservacionTennis = new ReservacionTenni { IdReservacionTennis = id };
             reservacionTennisDAL.Remove(reservacionTennis);
 
             return new  JsonResult(reservacionTennis);

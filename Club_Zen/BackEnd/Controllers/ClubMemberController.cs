@@ -1,6 +1,6 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd;
 
@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public ClubMemberController()
         {
-            clubMemberDAL = new ClubMemberDALImpl(new Entities.BD_Club_ZenContext());
+            clubMemberDAL = new ClubMemberDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.ClubMember> clubmembers = clubMemberDAL.GetAll();
+            IEnumerable<ClubMember> clubmembers = clubMemberDAL.GetAll();
 
 
             return new JsonResult(clubmembers);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.ClubMember clubmember;
+            ClubMember clubmember;
             clubmember = clubMemberDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<CategoryController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.ClubMember clubmember)
+        public JsonResult Post([FromBody] ClubMember clubmember)
         {
             clubMemberDAL.Add(clubmember);
             return new JsonResult(clubmember);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<CategoryController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.ClubMember clubmember)
+        public JsonResult Put([FromBody] ClubMember clubmember)
         {
 
             clubMemberDAL.Update(clubmember);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.ClubMember clubmember = new Entities.ClubMember { IdClubMember = id };
+            ClubMember clubmember = new ClubMember { IdClubMember = id };
             clubMemberDAL.Remove(clubmember);
 
             return new  JsonResult(clubmember);

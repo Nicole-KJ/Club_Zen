@@ -1,6 +1,6 @@
 ﻿using DAL.Implementations;
 using DAL.Interfaces;
-using Entities;
+using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd;
 
@@ -19,7 +19,7 @@ namespace BackEnd.Controllers
         #region Constructor
         public EventoController()
         {
-            eventoDAL = new EventoDALImpl(new Entities.BD_Club_ZenContext());
+            eventoDAL = new EventoDALImpl(new BD_Club_ZenContext());
 
         }
         #endregion
@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            IEnumerable<Entities.Evento> eventos = eventoDAL.GetAll();
+            IEnumerable<Evento> eventos = eventoDAL.GetAll();
 
 
             return new JsonResult(eventos);
@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public JsonResult Get(int id)
         {
-            Entities.Evento evento;
+           Evento evento;
             evento = eventoDAL.Get(id);
 
 
@@ -52,7 +52,7 @@ namespace BackEnd.Controllers
         #region Agregar
         // POST api/<EventoController>
         [HttpPost]
-        public JsonResult Post([FromBody] Entities.Evento evento)
+        public JsonResult Post([FromBody] Evento evento)
         {
             eventoDAL.Add(evento);
             return new JsonResult(evento);
@@ -65,7 +65,7 @@ namespace BackEnd.Controllers
         #region Modificar
         // PUT api/<EventoController>/5
         [HttpPut]
-        public JsonResult Put([FromBody] Entities.Evento evento)
+        public JsonResult Put([FromBody] Evento evento)
         {
 
             eventoDAL.Update(evento);
@@ -80,7 +80,7 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
-            Entities.Evento evento = new Entities.Evento { IdEvento = id };
+            Evento evento = new Evento { IdEvento = id };
             eventoDAL.Remove(evento);
 
             return new  JsonResult(evento);

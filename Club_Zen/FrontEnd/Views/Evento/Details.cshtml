@@ -5,10 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Detalle</h1>
 
 <div>
-    <h4>EventoViewModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -56,6 +55,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdEvento }) |
     <a asp-action="Index">Back to List</a>
 </div>
