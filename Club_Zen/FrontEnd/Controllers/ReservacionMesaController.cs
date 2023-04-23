@@ -1,20 +1,28 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FrontEnd.Helpers;
+using FrontEnd.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FrontEnd.Controllers
 {
     public class ReservacionMesaController : Controller
     {
+        ReservacionMesaHelper reservacionMesaHelper;
         // GET: ReservacionMesaController
         public ActionResult Index()
         {
-            return View();
+            reservacionMesaHelper = new ReservacionMesaHelper();
+            List<ReservacionMesaViewModel> list = reservacionMesaHelper.GetAll();
+            return View(list);
         }
 
         // GET: ReservacionMesaController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            reservacionMesaHelper = new ReservacionMesaHelper();
+            ReservacionMesaViewModel reservacionmesa = reservacionMesaHelper.Get(id);
+
+            return View(reservacionmesa);
         }
 
         // GET: ReservacionMesaController/Create
@@ -26,11 +34,14 @@ namespace FrontEnd.Controllers
         // POST: ReservacionMesaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ReservacionMesaViewModel reservacionmesa)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                reservacionMesaHelper = new ReservacionMesaHelper();
+                reservacionmesa = reservacionMesaHelper.Create(reservacionmesa);
+
+                return RedirectToAction("Details", new { id = reservacionmesa.IdReservacionMesa });
             }
             catch
             {
@@ -41,16 +52,20 @@ namespace FrontEnd.Controllers
         // GET: ReservacionMesaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            reservacionMesaHelper = new ReservacionMesaHelper();
+            ReservacionMesaViewModel reservacionmesa = reservacionMesaHelper.Get(id);
+            return View(reservacionmesa);
         }
 
         // POST: ReservacionMesaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(ReservacionMesaViewModel reservacionmesa)
         {
             try
             {
+                reservacionMesaHelper = new ReservacionMesaHelper();
+                reservacionmesa = reservacionMesaHelper.Edit(reservacionmesa);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -62,16 +77,21 @@ namespace FrontEnd.Controllers
         // GET: ReservacionMesaController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            reservacionMesaHelper = new ReservacionMesaHelper();
+            ReservacionMesaViewModel reservacionmesa = reservacionMesaHelper.Get(id);
+
+            return View(reservacionmesa);
         }
 
         // POST: ReservacionMesaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(ReservacionMesaViewModel reservacionmesa)
         {
             try
             {
+                reservacionMesaHelper = new ReservacionMesaHelper();
+                reservacionMesaHelper.Delete(reservacionmesa.IdReservacionMesa);
                 return RedirectToAction(nameof(Index));
             }
             catch

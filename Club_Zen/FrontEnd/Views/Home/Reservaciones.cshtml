@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Reservaciones";
-
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -13,7 +13,7 @@
                 <div class="gallery-item h-100">
                     <img src="../wwwroot/assets/img/gallery/ReservacionRanchito.jpg" class="img-fluid" alt="">
                     <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a asp-controller="ReservacionRanchito" asp-action="Create">ReservacionRanchito</a>
+                        <a asp-controller="ReservacionEvento" asp-action="Index">ReservacionEvento</a>
                     </div>
                 </div>
             </div><!-- End Gallery Item -->
@@ -21,7 +21,7 @@
                 <div class="gallery-item h-100">
                     <img src="assets/img/gallery/ranchito.png" class="img-fluid" alt="">
                     <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a asp-controller="Ranchito" asp-action="Index">Ranchitos</a>
+                        <a asp-controller="ReservacionMesa" asp-action="Index">ReservacionMesa</a>
                     </div>
                 </div>
             </div><!-- End Gallery Item -->
@@ -30,22 +30,6 @@
                     <img src="assets/img/gallery/mesas.webp" class="img-fluid" alt="">
                     <div class="gallery-links d-flex align-items-center justify-content-center">
                         <a asp-controller="Mesa" asp-action="Index">Mesas</a>
-                    </div>
-                </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="gallery-item h-100">
-                    <img src="assets/img/gallery/eventos.png" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a asp-controller="Evento" asp-action="Index">Eventos</a>
-                    </div>
-                </div>
-            </div><!-- End Gallery Item -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="gallery-item h-100">
-                    <img src="assets/img/gallery/tennis-court.jpeg" class="img-fluid" alt="">
-                    <div class="gallery-links d-flex align-items-center justify-content-center">
-                        <a asp-controller="TennisCourt" asp-action="Index">Tennis Courts</a>
                     </div>
                 </div>
             </div><!-- End Gallery Item -->

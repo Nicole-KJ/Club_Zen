@@ -1,0 +1,82 @@
+﻿@model IEnumerable<FrontEnd.Models.ReservacionMesaViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Reservacion Mesas</h1>
+
+<p>
+    <a asp-action="Create">Crear</a>
+</p>
+<table style="color:white" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdReservacionMesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogFecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Personas)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            <tr>
+                <td colspan="3" style="text-align: center;">No hay mesas registradas</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                @Html.DisplayFor(modelItem => item.IdReservacionMesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogFecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personas)
+            </td>
+            <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IdReservacionMesa }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IdReservacionMesa }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IdReservacionMesa })
+            </td>
+        </tr>
+    }
+}
+    </tbody>
+</table>
