@@ -1,0 +1,60 @@
+﻿@model IEnumerable<FrontEnd.Models.ReservacionRanchitoViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Reservacion Ranchito</h3>
+
+<p>
+    <a asp-action="Create">Agregar nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdReservacionRanchito)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdRanchito)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaReserva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogFecha)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdReservacionRanchito)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdRanchito)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaReserva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogFecha)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.IdReservacionRanchito}) |
+                    @Html.ActionLink("Details", "Details", new { id=item.IdReservacionRanchito }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.IdReservacionRanchito })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
