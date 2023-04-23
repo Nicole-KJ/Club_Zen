@@ -1,4 +1,5 @@
-﻿using FrontEnd.Helpers;
+﻿using Microsoft.AspNetCore.Http;
+using FrontEnd.Helpers;
 using FrontEnd.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -36,11 +37,11 @@ namespace FrontEnd.Controllers
 
         }
 
-        public IActionResult Privacy()
+        public IActionResult Login()
         {
             return View();
         }
-        public IActionResult Menu()
+        public IActionResult Reservaciones()
         {
             return View();
         }
