@@ -10,7 +10,7 @@
 <p>
     <a asp-action="Create">Agregar nuevo</a>
 </p>
-<table class="table">
+<table style="color:white" class="table">
     <thead>
         <tr>
             <th>
@@ -35,9 +35,18 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
+        @if (Model == null)
+        {
+            <tr>
+                <td colspan="3" style="text-align: center;">No hay reservaciones registradas</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
                 @Html.DisplayFor(modelItem => item.IdReservacionTennis)
             </td>
             <td>
@@ -61,6 +70,7 @@
                     @Html.ActionLink("Delete", "Delete", new {id=item.IdReservacionTennis })
             </td>
         </tr>
+    }
 }
     </tbody>
 </table>
