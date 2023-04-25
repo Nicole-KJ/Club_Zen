@@ -174,6 +174,38 @@ namespace DAL.Implementations
                 throw;
             }
         }
+        public IEnumerable<ReservacionTenni> GetTennisReservadosEnHora(DateTime fecha)
+        {
+            try
+            {
+                List<ReservacionTenni> reservacionesTennis = new List<ReservacionTenni>();
+
+                List<sp_GetTennisReservadosEnHora_Result> resultado;
+                string sql = "[dbo].[sp_sp_GetTennisReservadosEnHora] @fecha";
+
+                resultado = context.sp_GetTennisReservadosEnHora_Results.FromSqlRaw(sql).ToList();
+
+                foreach (var item in resultado)
+                {
+                    reservacionesTennis.Add(new ReservacionTenni
+                    {
+                        IdReservacionTennis = item.IdReservacionTennis,
+                        IdUsuario = item.IdUsuario,
+                        IdTennisCourt = item.IdTennisCourt,
+                        FechaInicio = item.FechaInicio,
+                        FechaFin = item.FechaFin
+                    });
+                }
+
+                return reservacionesTennis;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
         #endregion
     }
