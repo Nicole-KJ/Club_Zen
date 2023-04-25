@@ -5,14 +5,15 @@
 }
 
 <h1>Usuarios</h1>
-
+<!--
 <p>
     <a asp-action="Create">Crear</a>
 </p>
-
+-->
 <table class="table" style="color: white;">
     <thead>
         <tr>
+            <!--
             <th>
                 @Html.DisplayNameFor(model => model.IdUsuario)
             </th>
@@ -25,6 +26,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.IdClubMember)
             </th>
+            -->
             <th>
                 @Html.DisplayNameFor(model => model.Cedula)
             </th>
@@ -40,10 +42,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Correo)
             </th>
+            <!--
             <th>
                 @Html.DisplayNameFor(model => model.FechaRegistro)
             </th>
-
+            -->
             <th></th>
         </tr>
     </thead>
@@ -59,6 +62,7 @@
             @foreach (var item in Model)
             {
                 <tr>
+                    <!--
                     <td>
                         @Html.DisplayFor(modelItem => item.IdUsuario)
                     </td>
@@ -71,6 +75,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.IdClubMember)
                     </td>
+                    -->
                     <td>
                         @Html.DisplayFor(modelItem => item.Cedula)
                     </td>
@@ -86,14 +91,17 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Correo)
                     </td>
+                    <!--
                     <td>
                         @Html.DisplayFor(modelItem => item.FechaRegistro)
                     </td>
+                    
                     <td>
                         @Html.ActionLink("Editar", "Edit", new { id = item.IdUsuario }) |
                         @Html.ActionLink("Detalles", "Details", new { id = item.IdUsuario }) |
                         @Html.ActionLink("Eliminar", "Delete", new { id = item.IdUsuario })
                     </td>
+                    -->
                 </tr>
             }
         }
