@@ -144,7 +144,7 @@ namespace DAL.Implementations
 
         #region StoredProcedures
 
-        public IEnumerable<ReservacionMesa> GetMisReservacionesMesa()
+        public IEnumerable<ReservacionMesa> GetMisReservacionesMesa(int idUsuario)
         {
             try
             {

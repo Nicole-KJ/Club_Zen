@@ -38,8 +38,9 @@ namespace Entities.Entities
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
         public virtual DbSet<sp_GetAllUsuarios_Result> sp_GetAllUsuarios_Result { get; set; } = null!;
         public virtual DbSet<sp_GetMisReservacionesMesa_Result> sp_GetMisReservacionesMesa_Results { get; set; } = null!;
+        public virtual DbSet<sp_GetMesasParaCantidad_Result> sp_GetMesasParaCantidad_Results { get; set; } = null!;
 
-
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
