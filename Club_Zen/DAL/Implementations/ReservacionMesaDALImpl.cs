@@ -1,5 +1,6 @@
 ﻿using DAL.Interfaces;
 using Entities.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,6 @@ namespace DAL.Implementations
     {
         BD_Club_ZenContext context;
 
-
         public ReservacionMesaDALImpl()
         {
             context = new BD_Club_ZenContext();
@@ -26,6 +26,7 @@ namespace DAL.Implementations
 
         }
 
+        #region Generic
         public bool Add(ReservacionMesa entity)
         {
             try
@@ -138,5 +139,45 @@ namespace DAL.Implementations
 
             return result;
         }
+
+        #endregion
+
+        #region StoredProcedures
+
+        public IEnumerable<ReservacionMesa> GetMisReservacionesMesa()
+        {
+            try
+            {
+                List<ReservacionMesa> reservacionesMesa = new List<ReservacionMesa>();
+
+                List<sp_GetMisReservacionesMesa_Result> resultado;
+                string sql = "[dbo].[sp_GetMisReservacionesMesa] @idUsuario";
+
+                resultado = context.sp_GetMisReservacionesMesa_Results.FromSqlRaw(sql).ToList();
+
+                foreach (var item in resultado)
+                {
+                    reservacionesMesa.Add(new ReservacionMesa
+                    {
+                        IdReservacionMesa = item.IdReservacionMesa,
+                        IdMesa = item.IdMesa,
+                        IdUsuario = item.IdUsuario,
+                        FechaInicio = item.FechaInicio, 
+                        FechaFin = item.FechaFin,
+                        Personas = item.Personas
+                    });
+                }
+
+                return reservacionesMesa;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        #endregion
+
     }
 }
