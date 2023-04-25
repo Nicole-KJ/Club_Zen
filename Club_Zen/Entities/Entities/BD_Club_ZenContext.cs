@@ -249,11 +249,7 @@ namespace Entities.Entities
 
                 entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
 
-                entity.Property(e => e.LogFecha)
-                    .IsRowVersion()
-                    .IsConcurrencyToken()
-                    .HasColumnName("logFecha");
-
+         
                 entity.Property(e => e.Personas).HasColumnName("personas");
 
                 entity.HasOne(d => d.IdEventoNavigation)
@@ -289,11 +285,6 @@ namespace Entities.Entities
 
                 entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
 
-                entity.Property(e => e.LogFecha)
-                    .IsRowVersion()
-                    .IsConcurrencyToken()
-                    .HasColumnName("logFecha");
-
                 entity.Property(e => e.Personas).HasColumnName("personas");
 
                 entity.HasOne(d => d.IdMesaNavigation)
@@ -324,10 +315,6 @@ namespace Entities.Entities
                 entity.Property(e => e.IdRanchito).HasColumnName("id_ranchito");
 
                 entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
-
-                entity.Property(e => e.LogFecha)
-                    .HasColumnType("date")
-                    .HasColumnName("logFecha");
 
                 entity.HasOne(d => d.IdRanchitoNavigation)
                    .WithMany(p => p.ReservacionRanchitos)
@@ -361,11 +348,6 @@ namespace Entities.Entities
                 entity.Property(e => e.IdTennisCourt).HasColumnName("id_tennisCourt");
 
                 entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
-
-                entity.Property(e => e.LogFecha)
-                    .IsRowVersion()
-                    .IsConcurrencyToken()
-                    .HasColumnName("logFecha");
 
                 entity.HasOne(d => d.IdTennisCourtNavigation)
                     .WithMany(p => p.ReservacionTennis)
@@ -417,10 +399,7 @@ namespace Entities.Entities
                     .HasColumnType("date")
                     .HasColumnName("fechaNacimiento");
 
-                entity.Property(e => e.FechaRegistro)
-                    .IsRowVersion()
-                    .IsConcurrencyToken()
-                    .HasColumnName("fechaRegistro");
+                
 
                 entity.Property(e => e.IdClubMember).HasColumnName("id_clubMember");
 
