@@ -1,5 +1,6 @@
 ﻿using DAL.Interfaces;
 using Entities.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -138,5 +139,41 @@ namespace DAL.Implementations
 
             return result;
         }
+
+
+        #region StoredProcedures
+
+        public IEnumerable<ReservacionEvento> GetMisReservacionesEvento(int idUsuario)
+        {
+            try
+            {
+                List<ReservacionEvento> reservacionesEvento = new List<ReservacionEvento>();
+
+                List<sp_GetMisReservacionesEvento_Result> resultado;
+                string sql = "[dbo].[sp_GetMisReservacionesEvento] @idUsuario";
+
+                resultado = context.sp_GetMisReservacionesEvento_Results.FromSqlRaw(sql).ToList();
+
+                foreach (var item in resultado)
+                {
+                    reservacionesEvento.Add(new ReservacionEvento
+                    {
+                        IdReservacionEvento = item.IdReservacionEvento,
+                        IdUsuario = item.IdUsuario,
+                        IdEvento = item.IdEvento,
+                        Personas = item.Personas
+                    });
+                }
+
+                return reservacionesEvento;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        #endregion
     }
 }

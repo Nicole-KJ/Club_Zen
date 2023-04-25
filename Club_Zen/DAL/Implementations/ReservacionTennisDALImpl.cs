@@ -1,5 +1,6 @@
 ﻿using DAL.Interfaces;
 using Entities.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -138,5 +139,78 @@ namespace DAL.Implementations
 
             return result;
         }
+
+
+
+
+
+
+        #region StoredProcedures
+
+        public IEnumerable<ReservacionTenni> GetMisReservacionesTennis(int idUsuario)
+        {
+            try
+            {
+                List<ReservacionTenni> reservacionesTennis = new List<ReservacionTenni>();
+
+                List<sp_GetMisReservacionesTennis_Result> resultado;
+                string sql = "[dbo].[sp_GetMisReservacionesTennis] @idUsuario";
+
+                resultado = context.sp_GetMisReservacionesTennis_Results.FromSqlRaw(sql).ToList();
+
+                foreach (var item in resultado)
+                {
+                    reservacionesTennis.Add(new ReservacionTenni
+                    {
+                        IdReservacionTennis = item.IdReservacionTennis,
+                        IdUsuario = item.IdUsuario,
+                        IdTennisCourt = item.IdTennisCourt,
+                        FechaInicio = item.FechaInicio,
+                        FechaFin = item.FechaFin
+                    });
+                }
+
+                return reservacionesTennis;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public IEnumerable<ReservacionTenni> GetTennisReservadosEnHora(DateTime fecha)
+        {
+            try
+            {
+                List<ReservacionTenni> reservacionesTennis = new List<ReservacionTenni>();
+
+                List<sp_GetTennisReservadosEnHora_Result> resultado;
+                string sql = "[dbo].[sp_sp_GetTennisReservadosEnHora] @fecha";
+
+                resultado = context.sp_GetTennisReservadosEnHora_Results.FromSqlRaw(sql).ToList();
+
+                foreach (var item in resultado)
+                {
+                    reservacionesTennis.Add(new ReservacionTenni
+                    {
+                        IdReservacionTennis = item.IdReservacionTennis,
+                        IdUsuario = item.IdUsuario,
+                        IdTennisCourt = item.IdTennisCourt,
+                        FechaInicio = item.FechaInicio,
+                        FechaFin = item.FechaFin
+                    });
+                }
+
+                return reservacionesTennis;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        #endregion
     }
 }

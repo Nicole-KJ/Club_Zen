@@ -1,5 +1,6 @@
 ﻿using DAL.Interfaces;
 using Entities.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -138,5 +139,39 @@ namespace DAL.Implementations
 
             return result;
         }
+
+
+        #region StoredProcedures
+
+        public IEnumerable<Mesa> GetMesasParaCantidad(int cantidad)
+        {
+            try
+            {
+                List<Mesa> mesas = new List<Mesa>();
+
+                List<sp_GetMesasParaCantidad_Result> resultado;
+                string sql = "[dbo].[sp_GetMesasParaCantidad] @cantidad";
+
+                resultado = context.sp_GetMesasParaCantidad_Results.FromSqlRaw(sql).ToList();
+
+                foreach (var item in resultado)
+                {
+                    mesas.Add(new Mesa
+                    {
+                        IdMesa = item.IdMesa,
+                        Cantidad = item.Cantidad
+                    });
+                }
+
+                return mesas;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        #endregion
     }
 }

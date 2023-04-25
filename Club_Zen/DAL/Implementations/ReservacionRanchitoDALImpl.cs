@@ -1,5 +1,6 @@
 ﻿using DAL.Interfaces;
 using Entities.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -138,5 +139,75 @@ namespace DAL.Implementations
 
             return result;
         }
+
+
+
+
+
+        #region StoredProcedures
+
+        public IEnumerable<ReservacionRanchito> GetMisReservacionesRanchito(int idUsuario)
+        {
+            try
+            {
+                List<ReservacionRanchito> reservacionesRanchito = new List<ReservacionRanchito>();
+
+                List<sp_GetMisReservacionesRanchito_Result> resultado;
+                string sql = "[dbo].[sp_GetMisReservacionesRanchito] @idUsuario";
+
+                resultado = context.sp_GetMisReservacionesRanchito_Results.FromSqlRaw(sql).ToList();
+
+                foreach (var item in resultado)
+                {
+                    reservacionesRanchito.Add(new ReservacionRanchito
+                    {
+                        IdReservacionRanchito = item.IdReservacionRanchito,
+                        IdRanchito = item.IdRanchito,
+                        IdUsuario = item.IdUsuario,
+                        FechaReserva = item.FechaReserva
+                    });
+                }
+
+                return reservacionesRanchito;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public IEnumerable<ReservacionRanchito> GetRanchitosReservadosEnHora(DateOnly fecha)
+        {
+            try
+            {
+                List<ReservacionRanchito> reservacionesRanchito = new List<ReservacionRanchito>();
+
+                List<sp_GetRanchitosReservadosEnHora_Result> resultado;
+                string sql = "[dbo].[sp_GetRanchitosReservadosEnHora] @fecha";
+
+                resultado = context.sp_GetRanchitosReservadosEnHora_Results.FromSqlRaw(sql).ToList();
+
+                foreach (var item in resultado)
+                {
+                    reservacionesRanchito.Add(new ReservacionRanchito
+                    {
+                        IdReservacionRanchito = item.IdReservacionRanchito,
+                        IdRanchito = item.IdRanchito,
+                        IdUsuario = item.IdUsuario,
+                        FechaReserva = item.FechaReserva
+                    });
+                }
+
+                return reservacionesRanchito;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        #endregion
     }
 }
