@@ -36,7 +36,7 @@ namespace Entities.Entities
         public virtual DbSet<ReservacionTenni> ReservacionTennis { get; set; } = null!;
         public virtual DbSet<TennisCourt> TennisCourts { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
-
+        public virtual DbSet<sp_GetAllUsuarios_Result> sp_GetAllUsuarios_Result { get; set; } = null!;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(Util.ConnectionString);
@@ -326,12 +326,11 @@ namespace Entities.Entities
                 entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
 
                 entity.Property(e => e.LogFecha)
-                    .IsRowVersion()
-                    .IsConcurrencyToken()
+                    .HasColumnType("date")
                     .HasColumnName("logFecha");
 
                 entity.HasOne(d => d.IdRanchitoNavigation)
-                    .WithMany(p => p.ReservacionRanchitos)
+                   .WithMany(p => p.ReservacionRanchitos)
                     .HasForeignKey(d => d.IdRanchito)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Reservacion_Ranchito_Ranchitos");

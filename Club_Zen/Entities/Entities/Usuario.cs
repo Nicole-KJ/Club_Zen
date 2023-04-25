@@ -25,7 +25,7 @@ namespace Entities.Entities
         public DateTime FechaNacimiento { get; set; }
         public string Correo { get; set; } = null!;
         public string Contrasena { get; set; } = null!;
-        public DateTime FechaRegistro { get; set; }
+        public byte[] FechaRegistro { get; set; }
 
         public virtual ClubMember? IdClubMemberNavigation { get; set; }
         //public virtual Estado IdEstadoNavigation { get; set; } 

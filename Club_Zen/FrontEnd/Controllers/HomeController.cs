@@ -24,7 +24,7 @@ namespace FrontEnd.Controllers
         {
             try
             {
-                SecurityHelper securityHelper = new SecurityHelper();
+            SecurityHelper securityHelper = new SecurityHelper();
             TokenModel tokenModel = securityHelper.Login(usuario);
             HttpContext.Session.SetString("token", tokenModel.Token);
             return RedirectToAction("Index");

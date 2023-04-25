@@ -9,9 +9,9 @@ namespace Entities.Entities
         public int IdRanchito { get; set; }
         public int IdUsuario { get; set; }
         public DateTime FechaReserva { get; set; }
-        public byte[] LogFecha { get; set; } = null!;
-
-        public virtual Ranchito IdRanchitoNavigation { get; set; } = null!;
-        public virtual Usuario IdUsuarioNavigation { get; set; } = null!;
+        public DateTime LogFecha { get; set; }
+       
+        public virtual Ranchito IdRanchitoNavigation { get; set; } 
+        public virtual Usuario IdUsuarioNavigation { get; set; }
     }
 }

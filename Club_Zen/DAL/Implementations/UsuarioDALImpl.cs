@@ -1,5 +1,6 @@
 ﻿using DAL.Interfaces;
 using Entities.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,19 +72,40 @@ namespace DAL.Implementations
         public IEnumerable<Usuario> GetAll()
         {
             try
-            {
-                IEnumerable<Usuario> categories;
-                using (UnidadDeTrabajo<Usuario> unidad = new UnidadDeTrabajo<Usuario>(context))
+            {  
+                List<Usuario> usuarios = new List<Usuario>();
+
+                List<sp_GetAllUsuarios_Result> resultado;
+
+                string sql = "[dbo].[sp_GetALLUsuarios]";
+
+
+                resultado = context.sp_GetAllUsuarios_Result
+                        .FromSqlRaw(sql)
+                        .ToList();  
+
+                foreach (var item in resultado)
                 {
-                    categories = unidad.genericDAL.GetAll();
+                    usuarios.Add(
+                        new Usuario
+                        {                           
+                            Cedula = item.Cedula,
+                            Nombre = item.Nombre,
+                            Apellido = item.Apellido,
+                            FechaNacimiento = item.FechaNacimiento,
+                            Correo = item.Correo
+                        }
+                        );
                 }
-                return categories;
+                return usuarios;
             }
             catch (Exception)
             {
 
                 throw;
+
             }
+
         }
 
         public bool Remove(Usuario entity)
