@@ -33,7 +33,7 @@
     <header id="header" class="header d-flex align-items-center">
         <div class="container-fluid d-flex align-items-center justify-content-between">
 
-            <a asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center  me-auto me-lg-0">
+            <a asp-controller="Home" asp-action="Index" id="logo" class="logo d-flex align-items-center  me-auto me-lg-0">
                 <img src="~/assets/img/zen.png" alt="logo">
                 <h1>ClubZen</h1>
             </a>
@@ -46,8 +46,8 @@
                 </ul>
             </nav><!-- .navbar -->
             
-            <div class="navbar">
-                <a style="align-items-right; font-size:large" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+            <div id="login" class="navbar">
+                <a style="align-items-right; font-size:large" asp-area="" asp-controller="Home" asp-action="Login">Cerrar sesion</a>
             </div>
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
