@@ -175,6 +175,37 @@ namespace DAL.Implementations
             }
         }
 
+        public IEnumerable<ReservacionRanchito> GetRanchitosReservadosEnHora(DateOnly fecha)
+        {
+            try
+            {
+                List<ReservacionRanchito> reservacionesRanchito = new List<ReservacionRanchito>();
+
+                List<sp_GetRanchitosReservadosEnHora_Result> resultado;
+                string sql = "[dbo].[sp_GetRanchitosReservadosEnHora] @fecha";
+
+                resultado = context.sp_GetRanchitosReservadosEnHora_Results.FromSqlRaw(sql).ToList();
+
+                foreach (var item in resultado)
+                {
+                    reservacionesRanchito.Add(new ReservacionRanchito
+                    {
+                        IdReservacionRanchito = item.IdReservacionRanchito,
+                        IdRanchito = item.IdRanchito,
+                        IdUsuario = item.IdUsuario,
+                        FechaReserva = item.FechaReserva
+                    });
+                }
+
+                return reservacionesRanchito;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         #endregion
     }
 }

@@ -41,8 +41,9 @@ namespace Entities.Entities
         public virtual DbSet<sp_GetMesasParaCantidad_Result> sp_GetMesasParaCantidad_Results { get; set; } = null!;
         public virtual DbSet<sp_GetMesasReservadasEnHora_Result> sp_GetMesasReservadasEnHora_Results { get; set; } = null!;
         public virtual DbSet<sp_GetMisReservacionesRanchito_Result> sp_GetMisReservacionesRanchito_Results { get; set; } = null!;
+        public virtual DbSet<sp_GetRanchitosReservadosEnHora_Result> sp_GetRanchitosReservadosEnHora_Results { get; set; } = null!;
 
-        //sp_GetMisReservacionesRanchito_Result
+        //sp_GetRanchitosReservadosEnHora_Result
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
