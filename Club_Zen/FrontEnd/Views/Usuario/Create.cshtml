@@ -5,65 +5,69 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Crear</h1>
+<h1>Crear Usuario</h1>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IdPermiso" class="control-label"></label>
-                <input asp-for="IdPermiso" class="form-control" />
-                <span asp-validation-for="IdPermiso" class="text-danger"></span>
+            <div class="row">
+                <div class="form-group">
+                    <label asp-for="IdPermiso" class="control-label"></label>
+                    <input asp-for="IdPermiso" class="zen-input mt-2 w-100" placeholder="Digite un ID" />
+                    <span asp-validation-for="IdPermiso" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdEstado" class="control-label"></label>
+                    <input asp-for="IdEstado" class="zen-input mt-2 w-100" placeholder="Digite un estado" />
+                    <span asp-validation-for="IdEstado" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="IdEstado" class="control-label"></label>
-                <input asp-for="IdEstado" class="form-control" />
-                <span asp-validation-for="IdEstado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdClubMember" class="control-label"></label>
-                <input asp-for="IdClubMember" class="form-control" />
-                <span asp-validation-for="IdClubMember" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cedula" class="control-label"></label>
-                <input asp-for="Cedula" class="form-control" />
-                <span asp-validation-for="Cedula" class="text-danger"></span>
+            <div class="row">
+                <div class="form-group">
+                    <label asp-for="IdClubMember" class="control-label"></label>
+                    <input asp-for="IdClubMember" class="zen-input mt-2 w-100" placeholder="Ingrese un Club Member ID" />
+                    <span asp-validation-for="IdClubMember" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cedula" class="control-label"></label>
+                    <input asp-for="Cedula" class="zen-input mt-2 w-100" placeholder="Ingrese una cédula" />
+                    <span asp-validation-for="Cedula" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
+                <input asp-for="Nombre" class="zen-input mt-2 w-100" placeholder="Digite un nombre" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Apellido" class="control-label"></label>
-                <input asp-for="Apellido" class="form-control" />
+                <input asp-for="Apellido" class="zen-input mt-2 w-100" placeholder="Digite un apellido o apellidos" />
                 <span asp-validation-for="Apellido" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FechaNacimiento" class="control-label"></label>
-                <input asp-for="FechaNacimiento" class="form-control" />
+                <input asp-for="FechaNacimiento" class="zen-input mt-2 w-100" />
                 <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Correo" class="control-label"></label>
-                <input asp-for="Correo" class="form-control" />
+                <input asp-for="Correo" class="zen-input mt-2 w-100" placeholder="Ingrese un correo electrónico" />
                 <span asp-validation-for="Correo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Contrasena" class="control-label"></label>
-                <input asp-for="Contrasena" class="form-control" />
+                <input asp-for="Contrasena" class="zen-input mt-2 w-100" placeholder="Digite una contraseña" />
                 <span asp-validation-for="Contrasena" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FechaRegistro" class="control-label"></label>
-                <input asp-for="FechaRegistro" class="form-control" />
+                <input asp-for="FechaRegistro" class="zen-input mt-2 w-100" />
                 <span asp-validation-for="FechaRegistro" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group mt-4">
+                <input type="submit" value="Create" class="variant-primary w-100" />
             </div>
         </form>
     </div>

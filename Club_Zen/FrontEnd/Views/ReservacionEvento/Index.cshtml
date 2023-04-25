@@ -25,9 +25,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Personas)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LogFecha)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -53,9 +50,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Personas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LogFecha)
             </td>
             <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.IdReservacionEvento }) |

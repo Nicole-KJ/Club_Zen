@@ -1,11 +1,11 @@
 ﻿@model FrontEnd.Models.EventoViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Evento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Crear</h1>
+<h1>Crear evento</h1>
 
 <hr />
 <div class="row">
@@ -14,40 +14,41 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
+                <input asp-for="Nombre" class="zen-input mt-2 w-100" placeholder="Ingrese un nombre" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Desc" class="control-label">Descripcion</label>
-                <input asp-for="Desc" class="form-control" />
+                <input asp-for="Desc" class="zen-input mt-2 w-100" placeholder="Ingrese una descripción" />
                 <span asp-validation-for="Desc" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Fecha" class="control-label"></label>
-                <input asp-for="Fecha" class="form-control" />
+                <input asp-for="Fecha" class="zen-input mt-2 w-100" />
                 <span asp-validation-for="Fecha" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Precio" class="control-label"></label>
-                <input asp-for="Precio" class="form-control" />
+                <input asp-for="Precio" class="zen-input mt-2 w-100" placeholder="Digite un precio" />
                 <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CupoMax" class="control-label"></label>
-                <input asp-for="CupoMax" class="form-control" />
+                <input asp-for="CupoMax" class="zen-input mt-2 w-100" placeholder="Digite el cupo máximo" />
                 <span asp-validation-for="CupoMax" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AsistenciaReservada" class="control-label"></label>
-                <input asp-for="AsistenciaReservada" class="form-control" />
+                <input asp-for="AsistenciaReservada" class="zen-input mt-2 w-100" placeholder="Inserte un número" />
                 <span asp-validation-for="AsistenciaReservada" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group mt-4">
+                <input type="submit" value="Crear" class="variant-primary w-100" />
             </div>
         </form>
     </div>
 </div>
+
 
 <div>
     <a asp-action="Index">Back to List</a>
